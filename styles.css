@@ -51,7 +51,8 @@
       );
   }
   
-  /* BACKGROUND BUILDINGS - &quot;bb&quot; stands for &quot;background building&quot; */
+  /* background buildings */
+
   .bb1 {
     width: 10%;
     height: 70%;
@@ -148,7 +149,8 @@
     background-color: var(--window-color4);
   }
   
-  /* FOREGROUND BUILDINGS - &quot;fb&quot; stands for &quot;foreground building&quot; */
+  /* foreground buildings */
+
   .fb1 {
     width: 10%;
     height: 60%;
@@ -314,3 +316,61 @@
         );
     }
   }
+
+.sun {
+  width: 100px; /* Adjust size to match your visual preference */
+  height: 100px;
+  background-color: #ffcf33;
+  border-radius: 50%;
+  position: absolute;
+  
+  /* Align to the same coordinates as the gradient */
+  top: 15%;
+  left: 15%;
+  
+  /* This centers the div exactly on the 15% 15% point */
+  transform: translate(-50%, -50%);
+  
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+/* Ensure the dark mode color change also has the transition */
+.dark-mode .sun {
+  background-color: #f0f0f0; 
+}
+
+.dark-mode .sky {
+  background: radial-gradient(closest-corner circle at 15% 15%, #ccc, #fff 20%, #000 100%);
+}
+
+.dark-mode .building-wrap, 
+.dark-mode .bb2, 
+.dark-mode .bb3, 
+.dark-mode .fb4, 
+.dark-mode .fb5, 
+.dark-mode .fb6 {
+  filter: brightness(0.3);
+}
+
+/* The animation */
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(10deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* The class we will add via JavaScript */
+.blown-up {
+  animation: explode 0.8s ease-out forwards;
+}
